@@ -15,17 +15,17 @@ import digitalio
 keyboard = KMKKeyboard()
 
 #pins
-keyboard.row_pins = [board.GP0, board.GP1, board.GP2, board.GP3, board.GP4]
-keyboard.col_pins = [board.GP10, board.GP11, board.GP12, board.GP13,
-                     board.GP14, board.GP15, board.GP26, board.GP27]
+keyboard.row_pins = [board.GP4, board.GP5, board.GP6, board.GP7, board.GP25]
+keyboard.col_pins = [board.GP10, board.GP0, board.GP1, board.GP2, board.GP3]
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
 #split config
 split = Split(
     split_target_left=True,
-    split_flip=False,
+    split_flip=True,
     split_side=SplitSide.LEFT,
     data_pin=board.GP8,
+    data_pin2=board.GP9,
     split_type=SplitType.UART,
     uart_interval=20,
     use_pio=True
@@ -38,12 +38,9 @@ locks = LockStatus()
 keyboard.extensions.append(locks)
 
 #led setup
-capsled = digitalio.DigitalInOut(board.GP7)
-capsled.direction = digitalio.Direction.OUTPUT
-capsled.value = False
 
 
-gled = digitalio.DigitalInOut(board.GP6)
+gled = digitalio.DigitalInOut(board.GP11)
 gled.direction = digitalio.Direction.OUTPUT
 gled.value = False
 
@@ -70,7 +67,7 @@ keyboard.modules.append(layers)
 
 
 #custom keys
-MOMENTARY = KC.MO(1)
+MO = KC.MO(1)
 layer_2 = False
           
 
@@ -87,16 +84,16 @@ def toggle_game_layer(*args):
 
     return False
 
-LAYER_2_TOGGLE = Key(on_press=toggle_game_layer)
+GAME_TOGGLE = Key(on_press=toggle_game_layer)
 #keymap
 
 
 keyboard.keymap = [
-    [KC.LSFT(KC.LGUI(KC.S)), KC.ESC,  KC.N1, KC.N2, KC.N3, KC.N4, KC.N5, KC.NO, 	KC.NO, KC.N6, KC.N7, KC.N8, KC.N9, KC.N0, KC.BSLASH, KC.MEDIA_PLAY_PAUSE,
-    KC.MEDIA_NEXT_TRACK, KC.LSHIFT, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.TAB, 			LAYER_2_TOGGLE, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.LBRACKET, KC.RBRACKET,
-    KC.NO, KC.NO, KC.A, KC.S, KC.D, KC.F, KC.G, KC.NO, 					KC.NO, KC.H, KC.J, KC.K, KC.L, KC.SCOLON, KC.NO, KC.NO,
-    KC.NO, KC.NO, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.NO, 					KC.NO, KC.N, KC.M, KC.COMMA, KC.DOT, KC.SLASH, KC.NO, KC.NO,
-    KC.NO, KC.NO, KC.NO, KC.NO, KC.NO, KC.LCTL, KC.SPACE, KC.LGUI, 			MOMENTARY, KC.ENTER, KC.LSHIFT, KC.NO, KC.NO, KC.NO, KC.NO, KC.NO],
+    [KC.N1,   KC.N2,   KC.N3,   KC.N4,  KC.N5,       KC.N6,   KC.N7,  KC.N8,   KC.N9,    KC.N0,
+     KC.Q,    KC.W,    KC.E,    KC.R,   KC.T,        KC.Y,    KC.U,   KC.I,    KC.O,     KC.P,
+     KC.A,    KC.S,    KC.D,    KC.F,   KC.G,        KC.H,    KC.J,   KC.K,    KC.L,     KC.SCLN,
+     KC.Z,    KC.X,    KC.C,    KC.V,   KC.B,        KC.N,    KC.M,   KC.COMM, KC.DOT,   KC.SLSH,
+     KC.LSFT, KC.LALT, KC.LCTL, KC.SPC, KC.RCMD,     KC.RSFT, MO,     KC.ENT,  KC.MINS,  KC.EQL],
 
     [KC.LSFT(KC.LGUI(KC.S)), KC.ESC,  KC.N1, KC.N2, KC.F3, KC.N4, KC.N5, KC.LCTL(KC.LALT), 	KC.CAPS, KC.N6, KC.N7, KC.N8, KC.N9, KC.N0, KC.BSLASH, KC.MEDIA_PLAY_PAUSE,
     KC.MEDIA_PREV_TRACK, KC.TAB, KC.TILDE, KC.W, KC.UP, KC.R, KC.T, KC.NO, 			LAYER_2_TOGGLE, KC.MINUS, KC.EQUAL, KC.I, KC.O, KC.P, KC.LBRACKET, KC.RBRACKET,
