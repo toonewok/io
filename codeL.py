@@ -11,6 +11,7 @@ import digitalio
 #import os, sys
 #print(os.uname())
 #print(sys.version)
+#print('hi mom')
 
 keyboard = KMKKeyboard()
 
@@ -107,7 +108,7 @@ keyboard.keymap = [
      KC.LSFT, KC.NO,   KC.NO,   KC.TAB, KC.BSPC,     KC.RSFT, MO,     GTGL,    KC.UNDS,  KC.PLUS],
 
     [KC.N1,   KC.N2,   KC.N3,   KC.N4,  KC.N5,       KC.ESC,  KC.TAB, KC.F12,  KC.F1,    KC.F2,
-     KC.N5,   KC.Q,    KC.W,    KC.E,   KC.R,        KC.NO,   KC.NO,  KC,NO,   KC.NO,    KC.NO,
+     KC.N5,   KC.Q,    KC.W,    KC.E,   KC.R,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.LSFT, KC.A,    KC.S,    KC.D,   KC.F,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.LCTL, KC.Z,    KC.X,    KC.C,   KC.V,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.SPC,  KC.SPC,  KC.SPC,  KC.SPC, KC.SPC,      KC.NO,   KC.NO,  GTGL,    KC.NO,    KC.NO]

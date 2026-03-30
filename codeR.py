@@ -11,11 +11,11 @@ import digitalio
 #import os, sys
 #print(os.uname())
 #print(sys.version)
+#print('hi mom')
 
 keyboard = KMKKeyboard()
 
 #pins
-#i think worse case scenario I can just reverse the order of the col pins
 keyboard.row_pins = [board.GP4, board.GP5, board.GP6, board.GP7, board.GP25]
 keyboard.col_pins = [board.GP10, board.GP0, board.GP1, board.GP2, board.GP3]
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
@@ -108,7 +108,7 @@ keyboard.keymap = [
      KC.LSFT, KC.NO,   KC.NO,   KC.TAB, KC.BSPC,     KC.RSFT, MO,     GTGL,    KC.UNDS,  KC.PLUS],
 
     [KC.N1,   KC.N2,   KC.N3,   KC.N4,  KC.N5,       KC.ESC,  KC.TAB, KC.F12,  KC.F1,    KC.F2,
-     KC.N5,   KC.Q,    KC.W,    KC.E,   KC.R,        KC.NO,   KC.NO,  KC,NO,   KC.NO,    KC.NO,
+     KC.N5,   KC.Q,    KC.W,    KC.E,   KC.R,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.LSFT, KC.A,    KC.S,    KC.D,   KC.F,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.LCTL, KC.Z,    KC.X,    KC.C,   KC.V,        KC.NO,   KC.NO,  KC.NO,   KC.NO,    KC.NO,
      KC.SPC,  KC.SPC,  KC.SPC,  KC.SPC, KC.SPC,      KC.NO,   KC.NO,  GTGL,    KC.NO,    KC.NO]
